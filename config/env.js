@@ -7,5 +7,7 @@ export const {
     NODE_ENVIRONMENT,
     MONGODB_URI,
     JWT_SECRET,
-    JWT_EXPIRES_IN
+    JWT_EXPIRES_IN,
+    SENDER_EMAIL,
+    APP_PASSWORD
 } = process.env
