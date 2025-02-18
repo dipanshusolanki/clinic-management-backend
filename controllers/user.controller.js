@@ -1,12 +1,20 @@
-export const getUser = async(req, res, next) => {
+const getUser = async(req, res, next) => {
     try
     {
+        const userData = req.user;
         res.status(200).json({
-            message: `Hello, ${req.params.id}!`
+            status: true,
+            data: {
+                user: userData
+            }
         })
     }
     catch(error)
     {
         next(error);
     }
+}
+
+export {
+    getUser
 }

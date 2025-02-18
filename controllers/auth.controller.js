@@ -51,12 +51,9 @@ const signUp = async function(req, res, next) {
 const logIn = async function(req, res, next) {
     try
     {
-        console.log(req.cookies.accessToken);
-
         const {email, password: loginPassword } = req.body;
 
         const user = await User.findOne({email});
-
         if(!user)
         {
             const error = new Error("User not found");
@@ -65,7 +62,6 @@ const logIn = async function(req, res, next) {
         }
 
         const isPasswordValid = await bcrypt.compare(loginPassword, user.password);
-
         if(!isPasswordValid)
         {
             const error = new Error("Invalid Password");
@@ -74,7 +70,6 @@ const logIn = async function(req, res, next) {
         }
 
         const token = await jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
-
         res.cookie("accessToken", token, cookieOptions);
 
         const { password, ...responseUser } = user.toObject();
