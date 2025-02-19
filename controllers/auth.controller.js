@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {JWT_EXPIRES_IN, JWT_SECRET} from "../config/env.js";
 import cookieOptions from "../config/cookieConfig.js";
-import {sendSignUpMail} from "../utils/sendMail.js";
+import {sendOTPMail, sendSignUpMail} from "../utils/sendMail.js";
 
 
 const signUp = async function(req, res, next) {
@@ -38,6 +38,9 @@ const signUp = async function(req, res, next) {
 
         // Send an email just before sending response for successful signup
         await sendSignUpMail({userName, userEmail})
+
+        // OTP Testing
+        await sendOTPMail({userEmail});
 
         res.status(201).json({
             success: true,
