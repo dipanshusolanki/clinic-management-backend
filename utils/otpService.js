@@ -5,7 +5,7 @@ const generateOTP = () => {
 }
 
 const verifyOTP = async (email, userOTP) => {
-    const storedOTP = getStoredOTP(email);
+    const storedOTP = await getStoredOTP(email);
 
     if (!storedOTP) {
         return { success: false, message: "OTP expired or invalid" };

@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Password is required'],
         minlength: [8, 'Password must be at least 8 characters'],
     },
+    verified: {
+        type: Boolean,
+        default: false
+    },
     profilePicture: {
         type: String, // URL (Store in Storage Provider like Cloudinary)
     },
