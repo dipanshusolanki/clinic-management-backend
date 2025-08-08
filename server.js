@@ -5,6 +5,7 @@ import connectToDatabase from "./database/mongodb.js";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.router.js";
 import cors from "cors";
+import postRouter from "./routes/post.route.js";
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors({
 // Routers
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/posts', postRouter);
 
 
 app.get('/', (req, res) => {

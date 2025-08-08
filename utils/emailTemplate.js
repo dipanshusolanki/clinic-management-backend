@@ -38,7 +38,7 @@ export const signUpEmailTemplate = {
 
 // OTP email config
 
-export const generateOTPEmailTemplate = ({appName, OTP, validTime, year}) => {
+const generateOTPEmailTemplate = ({appName, OTP, validTime, year}) => {
     return `
         <!DOCTYPE html>
         <html lang="en">
